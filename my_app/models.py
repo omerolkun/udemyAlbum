@@ -17,5 +17,15 @@ class Album(models.Model):
     rel_date = models.DateField()
     num_stars = models.IntegerField()
 
+    rating = (
+        (1,"Worst"),
+        (2,"Bad"),
+        (3,"Meh"),
+        (4,"Good"),
+        (5,"Very Good")
+    )
+    num_stars = models.IntegerField(choices=rating)
+
+
     def __str__(self):
         return self.name +  " (" + str(self.rel_date) + ")"
