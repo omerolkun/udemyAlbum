@@ -9,9 +9,29 @@
 <body>
     <h3>This is a form sample</h3>
     <form action="" method="POST">
-        <label for="test_field">TEST field</label>
-        <input type="text" name="test_field" value="">
+        <label for="user_name">User name: </label>
+        <input type="text" name="user_name" value="" required>
+        <br>
+        <label for="email">E-mail: </label>
+        <input type="text" name="email" value="" required>
         <input type="submit" name="submit" value="Submit">
     </form>
+
+    <h1>DJANGOO</h1>
+    <form action="" method="POST">
+        {{obj_in_template}}
+        {% csrf_token %}
+        
+        <input type="submit" name="submit" value="Sumbitit">
+ 
+    </form>
+
+    <hr>
+
+    {% if form_submitted %}
+    {{user_name}}
+    {{user_email}}
+    {% endif %}
+
 </body>
 </html>

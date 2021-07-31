@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from my_app.models import Musician,Album
+from my_app import forms
 # Create your views here.
 
 def home(request):
@@ -12,4 +13,21 @@ def home(request):
 
 
 def form(request):
-    return render(request,"my_app/form.html")
+    obj_form = forms.user_form()
+    context = {
+        'obj_in_template':obj_form,
+    }
+
+    if request.method == 'POST':
+        obj_form = forms.user_form(request.POST)
+
+        if obj_form.is_valid():
+            user_name = obj_form.cleaned_data['user_name']
+            user_email = obj_form.cleaned_data['user_email']
+
+            context.update({'user_name':user_name})
+            context.update({'user_email':user_email})
+            context.update({'form_submitted':"Yes"})
+
+
+    return render(request,"my_app/form.html",context)
