@@ -5,4 +5,5 @@ from my_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home page"),
+    path('form/',views.form, name="form page"),
 ]

@@ -9,8 +9,30 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>HELOOOOOOOOOOOOOOOOOOOOOOOOOO</h1>
+    <h1>Music Site</h1>
+
+
     <p class="text-center">This is home page</p>
-    <img src="{% static 'images/trocki_lew.jpg' %}">
+    <img src="{% static 'images/sol.jpg' %}"  width="50" height="60">
+
+    <table border="1">
+        <tr>
+            <th>Name: </th>
+            <th>Surname: </th>
+            <th>Tool: </th>
+        </tr>
+    
+
+    {% for x in singer_in_template %}
+    <tr>
+        <td>{{x.first_name}}</td>
+        <td>{{x.last_name}}</td>
+        <td>{{x.tool}}</td>
+
+    </tr>
+    {% endfor %}
+
+    </table>
+
 </body>
 </html>
