@@ -46,3 +46,14 @@ def musician_list(request):
         'count_of_singer':count,
     }
     return render(request,"my_app/musician_list.html",context)
+
+
+def single_musician_detail(request,pk):
+    singer_id = pk
+    artist_object = Musician.objects.get(pk = singer_id)
+    
+    context = {
+        'artist':artist_object,
+
+    }
+    return render(request, "my_app/musician_detail.html",context)

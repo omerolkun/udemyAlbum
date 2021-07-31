@@ -6,6 +6,6 @@
     There are {{count_of_singer}} musicians in database
     <br>
     {% for x in listo_singer %}
-        <li>{{x.first_name}} {{x.last_name}}</li>
+        <li><a href= "{{x.pk}}">{{x.first_name}} {{x.last_name}}</a></li>
     {% endfor %}
 {% endblock %}

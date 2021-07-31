@@ -1,0 +1,10 @@
+{% extends 'my_app/base.html' %}
+
+{% block content %}
+<br><br><br><br><br>
+    {% for x in artist.album_set.all %}
+        {{x.name}} - 
+        {{x.rel_date}}<br>
+
+    {% endfor %}
+{% endblock %}
