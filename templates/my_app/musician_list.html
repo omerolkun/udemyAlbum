@@ -1,0 +1,11 @@
+{% extends 'my_app/base.html' %}
+
+{% block content %}
+    <p>Musicians are following</p>
+    <br>
+    There are {{count_of_singer}} musicians in database
+    <br>
+    {% for x in listo_singer %}
+        <li>{{x.first_name}} {{x.last_name}}</li>
+    {% endfor %}
+{% endblock %}

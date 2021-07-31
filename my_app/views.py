@@ -13,6 +13,8 @@ def home(request):
 
 
 def form(request):
+
+
     obj_form = forms.user_form()
     context = {
         'obj_in_template':obj_form,
@@ -31,3 +33,16 @@ def form(request):
 
 
     return render(request,"my_app/form.html",context)
+
+
+
+
+
+def musician_list(request):
+    singer_from_db = Musician.objects.all()
+    count = Musician.objects.all().count()
+    context = {
+        'listo_singer':singer_from_db,
+        'count_of_singer':count,
+    }
+    return render(request,"my_app/musician_list.html",context)
