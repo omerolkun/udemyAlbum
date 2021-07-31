@@ -57,3 +57,11 @@ def single_musician_detail(request,pk):
 
     }
     return render(request, "my_app/musician_detail.html",context)
+
+
+def albums(request):
+    albums = Album.objects.all()
+    context = {
+        'albums':albums,
+    }
+    return render(request,"my_app/album_list.html",context)

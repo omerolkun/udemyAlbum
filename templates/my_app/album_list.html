@@ -1,0 +1,8 @@
+{% extends 'my_app/base.html' %}
+
+{% block content %}
+    <br>
+    {% for x in albums %}
+        {{x.name}}<br>
+    {% endfor %}
+{% endblock %}

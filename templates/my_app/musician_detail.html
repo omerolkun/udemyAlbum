@@ -2,9 +2,19 @@
 
 {% block content %}
 <br><br><br><br><br>
-    {% for x in artist.album_set.all %}
-        {{x.name}} - 
-        {{x.rel_date}}<br>
+    <table>
+        <tr>
+            <th>Album name</th>
+            <th>Release date</th>
+            <th>Rating</th>
+        </tr>
+         {% for x in artist.album_set.all %}
+            <tr>
+               <td> {{x.name}}</td> 
+                <td> {{x.rel_date}}</td> 
+                <td> {{x.num_stars}}</td>
+            </tr>
 
-    {% endfor %}
+        {% endfor %}
+    </table>
 {% endblock %}
