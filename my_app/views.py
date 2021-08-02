@@ -1,5 +1,7 @@
+from typing import List
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.list import ListView
 from my_app.models import Musician,Album
 from my_app import forms
 
@@ -44,15 +46,8 @@ def form(request):
 
 
 
-def musician_list(request):
-    singer_from_db = Musician.objects.all()
-    count = Musician.objects.all().count()
-    context = {
-        'listo_singer':singer_from_db,
-        'count_of_singer':count,
-    }
-    return render(request,"my_app/musician_list.html",context)
-
+class Musicians(ListView):
+    model = Musician
 
 
 
@@ -67,14 +62,8 @@ def single_musician_detail(request,pk):
     return render(request, "my_app/musician_detail.html",context)
 
 
-def albums(request):
-    albums = Album.objects.all()
-    context = {
-        'albums':albums,
-    }
-    return render(request,"my_app/album_list.html",context)
-
-
+class AlbumsOgli(ListView):
+    model = Album
 
 
 def addMusician(request):

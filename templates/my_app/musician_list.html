@@ -4,7 +4,8 @@
     <p>Musicians are follosadaswing</p>
     <br>
     <br>
-    {% for x in listo_singer %}
-        <li><a href= "{{x.pk}}">{{x.first_name}} {{x.last_name}}</a></li>
+    {% for x in object_list %}
+        <a href="{{x.pk}}"> {{x.first_name}} {{x.last_name}}</a>
+        <br>
     {% endfor %}
 {% endblock %}
