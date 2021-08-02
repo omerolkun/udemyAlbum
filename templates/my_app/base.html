@@ -1,13 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/omercik.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
+
 <a href="{% url 'home page' %}">Home</a>
 <a href="{% url 'musicianlist' %}">Musicians</a>
 <a href="{% url 'albumlist' %}">Albums</a>
+<a href="{% url 'addsinger'%}">Add musician</a>
+<a href="{% url 'addalbums'%}">Add new album</a>
+<img src="{% static 'images/sol.jpg' %}" alt="solkey"  width="50" height="60" >
 
 <body>
     {% block content %}

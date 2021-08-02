@@ -1,0 +1,22 @@
+{% extends 'my_app/base.html' %}
+
+
+{% block content %}
+<h3>Current musician are:</h3>
+{% for x in singer_list %}
+    <li>{{x.first_name}} {{x.last_name}}</li>
+{% endfor %}
+<h2>You can add a new artist...</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    First name: <input type="text" name="f_name"><br>
+    Last name : <input type="text" name="l_name"><br>
+    Instrument : <input type="text" name="tool"><br>
+
+    <input type="submit" value="Click">
+
+
+</form>
+
+
+{% endblock %}

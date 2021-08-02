@@ -9,4 +9,6 @@ urlpatterns = [
     path('musician_list/',views.musician_list, name="musicianlist"),
     path('musician_list/<int:pk>', views.single_musician_detail, name = "detail page"),
     path('albums/',views.albums,name="albumlist"),
+    path('addmusician',views.addMusician, name="addsinger"),
+    path('addalbum/',views.addAlbum,name="addalbums"),
 ]

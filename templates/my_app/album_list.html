@@ -1,8 +1,12 @@
 {% extends 'my_app/base.html' %}
 
 {% block content %}
+{% load static %}
+
+    <br>
     <br>
     {% for x in albums %}
-        {{x.name}}<br>
+        {{x.name}}  - {{x.artist}}
+        <br>
     {% endfor %}
 {% endblock %}

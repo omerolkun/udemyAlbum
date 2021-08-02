@@ -2,7 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from my_app.models import Musician,Album
 from my_app import forms
+
+
+
+
 # Create your views here.
+
+
 
 def home(request):
     singer_list = Musician.objects.order_by('first_name')
@@ -48,6 +54,8 @@ def musician_list(request):
     return render(request,"my_app/musician_list.html",context)
 
 
+
+
 def single_musician_detail(request,pk):
     singer_id = pk
     artist_object = Musician.objects.get(pk = singer_id)
@@ -65,3 +73,46 @@ def albums(request):
         'albums':albums,
     }
     return render(request,"my_app/album_list.html",context)
+
+
+
+
+def addMusician(request):
+    musician_list = Musician.objects.all()
+    context = {
+        'singer_list':musician_list,
+    }
+
+
+    if request.method == "POST":
+        if request.POST.get("f_name") and request.POST.get("l_name") and request.POST.get("tool"):
+            '''semir = Musician()
+            semir.first_name = request.POST.get("f_name")
+            semir.last_name = request.POST.get("l_name")
+            semir.tool = request.POST.get("tool")'''
+
+            semir = Musician(first_name=request.POST.get("f_name"),last_name=request.POST.get("l_name"), tool = request.POST.get("tool"))
+            semir.save()
+
+            return render(request, "my_app/add_musician.html",context)
+
+    else:
+        return render(request,"my_app/add_musician.html",context)
+
+
+def addAlbum(request):
+    if request.method == "POST":
+        if request.POST.get("artist_name") and request.POST.get("album_name") and request.POST.get("date") and request.POST.get("num_stars"):
+            n_album = Album()
+            x = Musician.objects.get(first_name = request.POST.get(  "artist_name"))
+            n_album.artist = x
+            n_album.name = request.POST.get("album_name")
+            n_album.rel_date = request.POST.get("date")
+            n_album.num_stars = request.POST.get("num_stars")
+
+            n_album.save()
+            return render(request,"my_app/add_album.html")
+    else:
+        return render(request,"my_app/add_album.html")
+
+    
