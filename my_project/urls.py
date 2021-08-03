@@ -14,4 +14,5 @@ urlpatterns = [
     path('album_list/',AlbumsOgli.as_view(),name="albumlist"),
     path('addmusician',views.addMusician, name="addsinger"),
     path('addalbum/',views.addAlbum,name="addalbums"),
+
 ]

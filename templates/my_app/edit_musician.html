@@ -1,0 +1,16 @@
+{% extends 'my_app/base.html' %}
+
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+
+</form>
+
+{% for x in singer_list %}
+    <li> {{x.first_name}} {{x.last_name}}</li>
+{% endfor %}
+{% endblock %}

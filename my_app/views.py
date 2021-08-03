@@ -1,10 +1,11 @@
 from typing import List
+from django.db.models import query
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from my_app.models import Musician,Album
 from my_app import forms
-
+from .forms import MusicianForm
 
 
 
@@ -104,4 +105,10 @@ def addAlbum(request):
     else:
         return render(request,"my_app/add_album.html")
 
+
+
+
+
+def editMusician(request):
+    form = MusicianForm(request.POST or None)
     
