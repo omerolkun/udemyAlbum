@@ -1,3 +1,4 @@
+from re import U
 from typing import List
 from django.db.models import query
 from django.shortcuts import render
@@ -33,7 +34,7 @@ def form(request):
         obj_form = forms.user_form(request.POST)
 
         if obj_form.is_valid():
-            user_name = obj_form.cleaned_data['user_name']
+            user_name = obj_form.clean_data['user_name']
             user_email = obj_form.cleaned_data['user_email']
 
             context.update({'user_name':user_name})
@@ -108,7 +109,23 @@ def addAlbum(request):
 
 
 
+def detailSinger(request):
+    singer_list = Musician.objects.all()
+    url = []
+    for x in singer_list:
+        url.append(x.first_name + "_"+x.last_name)
+    context = {
+        "object_list":singer_list,
+        "urls_list":url,
+    }
+    return render (request,"my_app/detail_singer.html",context)
 
-def editMusician(request):
-    form = MusicianForm(request.POST or None)
-    
+
+def detailMusicianName(request,namos):
+    name_surname = namos.split("-")
+    x = Musician.objects.get(first_name= name_surname[0])
+    context={
+        "obj":x,
+        'namos':namos,
+    }
+    return render(request, "my_app/detail-musicianname.html",context)

@@ -14,5 +14,7 @@ urlpatterns = [
     path('album_list/',AlbumsOgli.as_view(),name="albumlist"),
     path('addmusician',views.addMusician, name="addsinger"),
     path('addalbum/',views.addAlbum,name="addalbums"),
+    path('details/',views.detailSinger, name="detailsingerpage"),
+    path('details/<slug:namos>',views.detailMusicianName,name="finaldetail"),
 
 ]
