@@ -10,11 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>album-form</title>
 </head>
-<body>
+
+<form method="POST">
+    <br><br><br><br><br>
     {{album_form.as_p}}
     {% csrf_token %}
-    <input type="submit" name="submit" value="subit">
-</body>
+    <input type="submit" name="submit" value="subit" class="btn btn-primary btn-sm">
+</form>   
 </html>
 
 {% endblock %}

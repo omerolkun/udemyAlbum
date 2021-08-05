@@ -123,12 +123,27 @@ def detailSinger(request):
 
 def detailMusicianName(request,namos):
     name_surname = namos.split("-")
-    x = Musician.objects.get(first_name= name_surname[0])
-    context={
-        "obj":x,
-        'namos':namos,
-        'name_surname':name_surname,
-    }
+    data = Musician.objects.filter(first_name=name_surname[0]).count()
+    if data == 1:
+        x = Musician.objects.get(first_name= name_surname[0])
+    else:
+        y = Musician.objects.get(last_name = name_surname[1])
+    if data ==1 :
+        context={
+            "obj":x,
+            
+            'namos':namos,
+            'name_surname':name_surname,
+            'count_of_name':data,
+        }
+    else:
+        context={
+            'obj':y,
+            
+            'namos':namos,
+            'name_surname':name_surname,
+            'count_of_name':data,
+        }      
     return render(request, "my_app/detail-musicianname.html",context)
 
 

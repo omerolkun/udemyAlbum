@@ -13,12 +13,35 @@
 </head>
 <br>
 <body>
+    count of name -> {{count_of_name}}
     namos - > {{namos}}<br><br><br>
-    Name : {{obj.first_name}}<br></br>
-    Surname: {{obj.last_name}}<br>Albums<br><br>
-</body>
-</html>
-{% for x in obj.album_set.all %}
-    {{x.name}}<br>
-{% endfor %}
+    {% if count_of_name == 1 %}
+        Name : {{obj.first_name}}<br></br>
+        Surname: {{obj.last_name}}<br>Albums<br><br>
+    </body>
+    </html>
+        {% for x in obj.album_set.all %}
+        {{x.name}}<br>
+        {% endfor %}
+    {% else %}
+        Name : {{obj.first_name}}
+        <br>
+        Surname: {{obj.last_name}}
+        <br>
+        Number of album: {{obj.album_set.count}}
+        {% if obj.album_set.count > 0 %}
+            Albums<br>
+            {% for x in obj.album_set.all %}
+                {{x.name}}
+            {% endfor %}
+        {% else %}
+            <p>There is no album to be displayed.</p>
+        {% endif %}
+
+
+
+
+    {% endif %}
+
 {% endblock %}
+
