@@ -177,5 +177,5 @@ def album_form(request):
         
         if form.is_valid():
             form.save(commit=True)
-            return detailSinger(request)
+            return home(request)
     return render(request,'my_app/album_form.html',context)
