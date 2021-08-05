@@ -179,3 +179,10 @@ def album_form(request):
             form.save(commit=True)
             return home(request)
     return render(request,'my_app/album_form.html',context)
+
+def edit_artist(request):
+    form = forms.MusicianForm()
+    context = {
+        'edit_form':form,
+    }
+    return render(request,"my_app/edit_artist.html",context)

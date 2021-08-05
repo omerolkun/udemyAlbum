@@ -25,7 +25,7 @@
     count of name -> {{count_of_name}}
     namos - > {{namos}}<br><br><br>
     {% if count_of_name == 1 %}
-        <a href="#" class="btn btn-primary btn-sm">edit</a>
+        <a href="{% url 'edit_artist_page' namos=slug %}">EDIT</a>
         <hr>
         Name : {{obj.first_name}}<br></br>
         Surname: {{obj.last_name}}<br>Albums<br><br>

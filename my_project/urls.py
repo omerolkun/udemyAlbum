@@ -15,8 +15,9 @@ urlpatterns = [
     path('addmusician',views.addMusician, name="addsinger"),
     path('addalbum/',views.addAlbum,name="addalbums"),
     path('details/',views.detailSinger, name="detailsingerpage"),
-    path('details/<slug:namos>',views.detailMusicianName,name="finaldetail"),
+    path('details/<slug:namos>/',views.detailMusicianName,name="finaldetail"),
     path('musician_form/',views.musician_form,name="musician_form"),
     path('album_form/',views.album_form, name='album_form'),
+    path('edit_artist/<slug:namos/',views.edit_artist,name='edit_artist_page'),
 
 ]
