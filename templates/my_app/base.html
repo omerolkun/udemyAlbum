@@ -15,9 +15,13 @@
 <a href="{% url 'albumlist' %}">Albums</a>
 <a href="{% url 'addsinger'%}">Add musician</a>
 <a href="{% url 'addalbums'%}">Add new album</a>
-<a href="{% url 'detailsingerpage' %}">detail musician</a>
-
+<a href="{% url 'detailsingerpage' %}">detail musician</a><br>
 <img src="{% static 'images/sol.jpg' %}" alt="solkey"  width="50" height="60" >
+<br>
+<a href="{% url 'musician_form' %}">musician form</a>
+<a href="{% url 'album_form' %}">album form</a>
+
+
 
 <body>
     {% block content %}

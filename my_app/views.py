@@ -1,7 +1,7 @@
 from re import U
 from typing import List
 from django.db.models import query
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from my_app.models import Musician,Album
@@ -127,5 +127,40 @@ def detailMusicianName(request,namos):
     context={
         "obj":x,
         'namos':namos,
+        'name_surname':name_surname,
     }
     return render(request, "my_app/detail-musicianname.html",context)
+
+
+
+def musician_form(request):
+    form = forms.MusicianForm()
+    context = {
+        'title' :"Add musician",
+        'musician_form':form,
+    }
+
+
+    if request.method=="POST":
+        form = forms.MusicianForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return home(request)
+
+
+    return render(request,"my_app/musician_form.html",context)
+
+
+def album_form(request):
+    form = forms.AlbumForm()
+    context = {
+        'album_form':form,
+    }
+
+    if request.method=="POST":
+        form = forms.AlbumForm(request.POST)
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return detailSinger(request)
+    return render(request,'my_app/album_form.html',context)

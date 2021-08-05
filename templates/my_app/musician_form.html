@@ -1,7 +1,5 @@
 {% extends 'my_app/base.html' %}
 
-
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +7,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musician info</title>
+    <title>musician_form</title>
 </head>
-<br>
 <body>
-    namos - > {{namos}}<br><br><br>
-    Name : {{obj.first_name}}<br></br>
-    Surname: {{obj.last_name}}<br>Albums<br><br>
+    
+    <form method="POST">
+        <br><br><br><br><br>
+        {{musician_form.as_p}}
+        {% csrf_token %}
+        <input type="submit" name="submit" value="subit" class="btn btn-primary btn-sm">
+    </form>    
 </body>
 </html>
-{% for x in obj.album_set.all %}
-    {{x.name}}<br>
-{% endfor %}
+
 {% endblock %}
