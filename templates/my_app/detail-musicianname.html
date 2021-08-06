@@ -21,7 +21,7 @@
         </style>
     Artist: {{obj.first_name}} {{obj.last_name}}
     <hr>
-    <a href="{% url 'edit_artist_page' obj.id %}">Edit this artist , goes to -> edit_artist/ingeter</a>
+    <a href="{% url 'edit_artist_page' pelkas_melkas=obj.id %}">Edit this artist , goes to -> edit_artist/ingeter</a>
     <hr>
     <br>
     <table>

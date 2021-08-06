@@ -11,6 +11,12 @@
 </head>
 <body>
     {{pek}}
+    <hr>
+    <form method="POST">
+        {{edit_form.as_p}}
+        {% csrf_token %}
+        <input type="submit" name="submit" value="updateox" class="btn btn-info btn-sm">
+    </form>
 </body>
 </html>
 

@@ -127,12 +127,17 @@ def detailMusicianName(request,torlak_kemal):
         'obj':clicked_artist,
     }
     return render (request,'my_app/detail-musicianname.html',context)
+######################################################################################
 
 def edit_artist(request,pelkas_melkas):
+    artist = Musician.objects.get(pk=pelkas_melkas)
+    form = forms.MusicianForm(instance=artist)
     context = {
         'pek':pelkas_melkas,
+        'edit_form':form,
     }
     return render(request,"my_app/edit_artist.html",context)
+######################################################################################
 
 def musician_form(request):
     form = forms.MusicianForm()
