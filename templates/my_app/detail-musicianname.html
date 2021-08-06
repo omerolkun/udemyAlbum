@@ -1,7 +1,5 @@
 {% extends 'my_app/base.html' %}
 
-
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,79 +7,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musician info</title>
+    <title>Artist info</title>
 </head>
-<br>
 <body>
     <style>
-        table,
-        th,
-        td {
-          padding: 10px;
+        table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
         }
-      </style>
-    count of name -> {{count_of_name}}
-    namos - > {{namos}}<br><br><br>
-    {% if count_of_name == 1 %}
-        <a href="{% url 'edit_artist_page' namos=slug %}">EDIT</a>
-        <hr>
-        Name : {{obj.first_name}}<br></br>
-        Surname: {{obj.last_name}}<br>Albums<br><br>
-        <table class="table table-bordered">
-            <tr>
-                <th>Album name</th>
-                <th>Release Date</th>
-                <th>Rating</th>
-            </tr>
-            {% for x in obj.album_set.all %}
-                <tr>
-                    <td>{{x.name}}</td>
-                    <td>{{x.rel_date}}</td>
-                    <td>{{x.num_stars}}</td>
-                </tr>
-            {% endfor %}
+        th, td {
+          padding: 15px;
+        }
+        </style>
+    Artist: {{obj.first_name}} {{obj.last_name}}
+    <hr>
+    <a href="{% url 'edit_artist_page' obj.id %}">Edit this artist , goes to -> edit_artist/ingeter</a>
+    <hr>
+    <br>
+    <table>
+        <tr>
+        <th>Album</th>
+        <th>Release Year</th>
+        <th>Rating</th>
+        </tr>
+        <tr>
+        {% for x in obj.album_set.all %}
+            <td>{{x.name}}</td>
+            <td>{{x.rel_date}}</td>
+            <td>{{x.num_stars}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
-
-        </table>
-
-
-    {% else %}
-    
-        Name : {{obj.first_name}}
-        <br>
-        Surname: {{obj.last_name}}
-        <br>
-        Number of album: {{obj.album_set.count}}
-        {% if obj.album_set.count > 0 %}
-        
-            <table>
-                <tr>
-                    <th>Album</th>
-                    <th>Rel date</th>
-                    <th>Ratings</th>
-                </tr>
-                {% for x in obj.album_set.all %}
-                <tr>
-                    <td>{{x.name}}</td>
-                    <td>{{x.rel_date}}</td>
-                    <td>{{x.num_stars}}</td>
-                </tr>
-            {% endfor %}
-
-
-            </table>
-
-        {% else %}
-            <p>There is no album to be displayed.</p>
-        {% endif %}
-
-
-
-
-    {% endif %}
 </body>
 </html>
-{% endblock %}
 
+
+
+{% endblock %}

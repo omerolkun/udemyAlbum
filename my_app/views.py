@@ -1,4 +1,4 @@
-from re import U
+from re import U, template
 from typing import List
 from django.db.models import query
 from django.shortcuts import redirect, render
@@ -121,32 +121,18 @@ def detailSinger(request):
     return render (request,"my_app/detail_singer.html",context)
 
 
-def detailMusicianName(request,namos):
-    name_surname = namos.split("-")
-    data = Musician.objects.filter(first_name=name_surname[0]).count()
-    if data == 1:
-        x = Musician.objects.get(first_name= name_surname[0])
-    else:
-        y = Musician.objects.get(last_name = name_surname[1])
-    if data ==1 :
-        context={
-            "obj":x,
-            
-            'namos':namos,
-            'name_surname':name_surname,
-            'count_of_name':data,
-        }
-    else:
-        context={
-            'obj':y,
-            
-            'namos':namos,
-            'name_surname':name_surname,
-            'count_of_name':data,
-        }      
-    return render(request, "my_app/detail-musicianname.html",context)
+def detailMusicianName(request,torlak_kemal):
+    clicked_artist = Musician.objects.get(pk=torlak_kemal)
+    context = {
+        'obj':clicked_artist,
+    }
+    return render (request,'my_app/detail-musicianname.html',context)
 
-
+def edit_artist(request,pelkas_melkas):
+    context = {
+        'pek':pelkas_melkas,
+    }
+    return render(request,"my_app/edit_artist.html",context)
 
 def musician_form(request):
     form = forms.MusicianForm()
@@ -180,9 +166,3 @@ def album_form(request):
             return home(request)
     return render(request,'my_app/album_form.html',context)
 
-def edit_artist(request):
-    form = forms.MusicianForm()
-    context = {
-        'edit_form':form,
-    }
-    return render(request,"my_app/edit_artist.html",context)

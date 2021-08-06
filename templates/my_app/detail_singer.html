@@ -1,9 +1,12 @@
 {% extends 'my_app/base.html' %}
 
 {% block content %}
-    <p>These are musicians , when you click -> adress is details/musicianname</p>
+<head>
+<title>List</title>
+</head>   
+<p>These are musicians , when you click -> adress is details/musicianname</p>
     {% for x in object_list %}
-        <li><a href="{{x.first_name}}-{{x.last_name}}"> {{x.first_name}} {{x.last_name}}  </a>     </li>
+        <li><a href="{% url 'finaldetail' x.id %}"> {{x.first_name}} {{x.last_name}}  </a>     </li>
     {% endfor %}
 
 
