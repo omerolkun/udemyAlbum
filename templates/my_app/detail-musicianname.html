@@ -20,6 +20,8 @@
         }
         </style>
     Artist: {{obj.first_name}} {{obj.last_name}}
+    <br>
+    Instrument : {{obj.tool}}
     <hr>
     <a href="{% url 'edit_artist_page' pelkas_melkas=obj.id %}">Edit this artist , goes to -> edit_artist/ingeter</a>
     <hr>

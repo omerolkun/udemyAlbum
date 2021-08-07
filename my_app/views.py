@@ -136,6 +136,15 @@ def edit_artist(request,pelkas_melkas):
         'pek':pelkas_melkas,
         'edit_form':form,
     }
+
+    if request.method == "POST":
+        form = forms.MusicianForm(request.POST, instance=artist)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return detailMusicianName(request,pelkas_melkas)
+
+
     return render(request,"my_app/edit_artist.html",context)
 ######################################################################################
 
