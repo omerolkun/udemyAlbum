@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.views.generic.list import ListView
 from my_app.models import Musician,Album
 from my_app import forms
-from .forms import MusicianForm
+from .forms import AlbumForm, MusicianForm
 
 
 
@@ -180,3 +180,22 @@ def album_form(request):
             return home(request)
     return render(request,'my_app/album_form.html',context)
 
+
+
+def editAlbum(request,album_id_omercik):
+    album_to_be_changed = Album.objects.get(pk = album_id_omercik)
+    artist_pk  = album_to_be_changed.artist.pk
+    form = forms.AlbumForm(instance=album_to_be_changed)
+    context = {
+        'editto_form':form,
+    }
+
+
+    if request.method=="POST":
+        form = forms.AlbumForm(request.POST,instance=album_to_be_changed)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return detailMusicianName(request,artist_pk)
+
+    return render (request, 'my_app/edit_album.html',context)

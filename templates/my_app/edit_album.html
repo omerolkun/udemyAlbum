@@ -10,7 +10,13 @@
     <title>Edit Album</title>
 </head>
 <body>
-    
+    <hr>
+    <form method="POST">
+        {{editto_form.as_p}}
+        {% csrf_token %}
+        <input type="submit" name="submit" value="update" class="btn btn-info btn-sm">
+    </form> 
+
 </body>
 </html>
 {% endblock %}

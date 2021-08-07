@@ -19,5 +19,6 @@ urlpatterns = [
     path('musician_form/',views.musician_form,name="musician_form"),
     path('album_form/',views.album_form, name='album_form'),
     path('edit_artist/<int:pelkas_melkas>/',views.edit_artist,name='edit_artist_page'),
+    path('edit_album/<int:album_id_omercik>',views.editAlbum,name='edit_album_page'),
 
 ]
