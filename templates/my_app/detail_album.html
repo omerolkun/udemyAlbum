@@ -1,0 +1,10 @@
+{% extends 'my_app/base.html' %}
+
+{% block content %}
+
+ <li>{{data}}
+</li>
+
+<a href="{% url 'edit_album_page' album_id_omercik=al_id %}">Edit the album</a>
+
+{% endblock %}

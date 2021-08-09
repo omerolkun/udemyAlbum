@@ -16,6 +16,8 @@
         {% csrf_token %}
         <input type="submit" name="submit" value="update" class="btn btn-info btn-sm">
     </form> 
+    <br>
+    <a href="{% url 'delete_album_page' album_no=al_no %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">DELETE</a>
 
 </body>
 </html>

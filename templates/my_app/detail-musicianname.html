@@ -34,7 +34,7 @@
         </tr>
         <tr>
         {% for x in obj.album_set.all %}
-            <td><a href="{% url 'edit_album_page' x.pk %}">    {{x.name}}</a></td>
+            <td><a href="{% url 'detail_album_page' album_detail_id=x.pk %}">    {{x.name}}</a></td>
             <td>{{x.rel_date}}</td>
             <td>{{x.num_stars}}</td>
         </tr>

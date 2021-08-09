@@ -183,11 +183,13 @@ def album_form(request):
 
 
 def editAlbum(request,album_id_omercik):
+    
     album_to_be_changed = Album.objects.get(pk = album_id_omercik)
     artist_pk  = album_to_be_changed.artist.pk
     form = forms.AlbumForm(instance=album_to_be_changed)
     context = {
         'editto_form':form,
+        'al_no':album_id_omercik,
     }
 
 
@@ -199,3 +201,23 @@ def editAlbum(request,album_id_omercik):
             return detailMusicianName(request,artist_pk)
 
     return render (request, 'my_app/edit_album.html',context)
+
+
+def deleteAlbum(request,album_no):
+    x = Album.objects.get(pk=album_no)
+    album = Album.objects.get(pk=album_no).delete()
+    context = {
+        'message':"The album is deleted",
+        'data':album,
+        'data2':x,
+    }
+    return render(request, 'my_app/delete_album.html',context)
+
+
+def detail_album(request,album_detail_id):
+    q = Album.objects.get(pk = album_detail_id)
+    context = {
+        'data':q,
+        'al_id':album_detail_id,
+    }
+    return render (request,'my_app/detail_album.html',context)
