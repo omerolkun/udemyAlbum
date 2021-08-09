@@ -28,6 +28,9 @@ class Album(models.Model):
     )
     num_stars = models.IntegerField(choices=rating)
 
+    class Meta:
+        ordering = ['-num_stars']
+
 
     def __str__(self):
         return self.name +  " (" + str(self.rel_date) + ")"

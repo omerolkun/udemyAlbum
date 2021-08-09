@@ -3,10 +3,27 @@
 {% block content %}
 {% load static %}
 
-    <br>
-    <br>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+<table>
+    <tr>
+        <th>Album name</th>
+        <th>Artist name</th>
+        <th>Rating</th>
+    </tr>
+
     {% for x in object_list %}
-        {{x.name}}  - {{x.artist}} 
-        <br>
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.artist}}</td>
+            <td>{{x.num_stars}}</td>
+            <td> <button> <a href="{% url 'detail_album_page' album_detail_id=x.pk %}" >Edit</a></button></td>
+        </tr>
     {% endfor %}
+
+</table>
 {% endblock %}
