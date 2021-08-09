@@ -190,6 +190,7 @@ def editAlbum(request,album_id_omercik):
     context = {
         'editto_form':form,
         'al_no':album_id_omercik,
+        'arpk':artist_pk,
     }
 
 
