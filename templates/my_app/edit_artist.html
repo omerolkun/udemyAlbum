@@ -17,7 +17,7 @@
         {% csrf_token %}
         <input type="submit" name="submit" value="updateox" class="btn btn-info btn-sm">
     </form>
-</body>
+    <a href="{% url 'delete_artist_page' singer_id=pek %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">DELETE</a></body>
 </html>
 
 

@@ -1,5 +1,5 @@
 body{
-    color:yellow;
+    color:rgb(41, 221, 65);
     background-color:blueviolet;
 }
 
@@ -9,4 +9,9 @@ a{
 
 li{
     color:wheat;
+}
+
+p {
+    color:yellow;
+    
 }

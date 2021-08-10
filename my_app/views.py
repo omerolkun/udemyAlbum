@@ -222,3 +222,13 @@ def detail_album(request,album_detail_id):
         'al_id':album_detail_id,
     }
     return render (request,'my_app/detail_album.html',context)
+
+
+def deleteArtist(requset, singer_id):
+    artist = Musician.objects.get(pk=singer_id)
+    x = Musician.objects.get(pk=singer_id).delete()
+    context  = {
+        'deteleted_artist':artist,
+        'message':"The artist is deleted from database..."
+    }
+    return render (requset, 'my_app/delete_artist.html',context)
